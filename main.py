@@ -1,6 +1,6 @@
 import time
 import requests
-from functions import initilize_bot
+from fun import initilize_bot
 from datetime import datetime
 import pytz
 
