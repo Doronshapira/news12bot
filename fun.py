@@ -19,8 +19,6 @@ def chrome_options():
     chrome_options.add_argument('--incognito')
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('window-size=1200x600')    
-    prefs = {"profile.managed_default_content_settings.images":2}
-    chrome_options.add_experimental_option("prefs", prefs)
     return chrome_options
 
 
