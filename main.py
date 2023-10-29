@@ -68,14 +68,15 @@ def update_channel(last_dict):
 
 
 def main():
+    print('start')
     global last_message_unix
     global message_dict
     # Set up the scheduler for background task
     while True:
         try:
             update_channel(message_dict)
-        except:
-            pass
+        except Exception as e:
+            print(e)
         time.sleep(10)  # Update every 60 seconds
 
 
