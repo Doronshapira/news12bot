@@ -2,6 +2,8 @@ import time
 
 # from selenium.webdriver.chrome.service import Service
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
@@ -18,7 +20,9 @@ def chrome_options():
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--incognito')
     chrome_options.add_argument('--headless')
-    chrome_options.add_argument('window-size=1200x600')
+    chrome_options.add_argument('window-size=1200x600')    
+    prefs = {"profile.managed_default_content_settings.images":2}
+    chrome_options.add_experimental_option("prefs", prefs)
     return chrome_options
 
 
@@ -69,7 +73,7 @@ def extract_info(soup):
 
 def initilize_bot():
     output_dict = {}
-    driver = webdriver.Chrome(options=chrome_options())
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     driver.get('https://www.n12.co.il/')
     x = WebDriverWait(driver, 30).until(
         EC.presence_of_element_located((By.CLASS_NAME, 'mc-drawer__btn')))
