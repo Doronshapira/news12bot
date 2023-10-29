@@ -69,7 +69,6 @@ def extract_info(soup):
 
 def initilize_bot():
     output_dict = {}
-    service = Service()
     driver = webdriver.Chrome(options=chrome_options())
     driver.get('https://www.n12.co.il/')
     x = WebDriverWait(driver, 30).until(
