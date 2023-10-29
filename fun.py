@@ -69,7 +69,8 @@ def extract_info(soup):
 
 def initilize_bot():
     output_dict = {}
-    driver = webdriver.Chrome(options=chrome_options)
+    service = Service(executable_path='chromedriver') # Here
+    driver = webdriver.Chrome(service=service) # Here
     driver.get('https://www.n12.co.il/')
     x = WebDriverWait(driver, 30).until(
         EC.presence_of_element_located((By.CLASS_NAME, 'mc-drawer__btn')))
